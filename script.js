@@ -4,64 +4,73 @@ const coin = document.getElementById("coin");
 const scoreEl = document.getElementById("score");
 const timerEl = document.getElementById("timer");
 
-const gameOverScreen = document.getElementById("gameOver");
-const finalScore = document.getElementById("finalScore");
+const gameOverScreen =
+document.getElementById("gameOver");
+
+const finalScore =
+document.getElementById("finalScore");
+
+const PLAYER_SIZE = 64;
+const COIN_SIZE = 48;
 
 let score = 0;
 let timeLeft = 60;
-
-const PLAYER_SIZE = 64;
-const COIN_SIZE = 40;
 
 let playerX = 0;
 let playerY = 0;
 
 const step = 20;
 
+/* PLACE COIN */
+
 function placeCoin(){
 
     const gameArea =
-        document.getElementById("gameArea");
+    document.getElementById("gameArea");
 
     const maxX =
-        gameArea.clientWidth - COIN_SIZE;
+    gameArea.clientWidth - COIN_SIZE;
 
     const maxY =
-        gameArea.clientHeight - COIN_SIZE;
+    gameArea.clientHeight - COIN_SIZE;
 
     const x =
-        Math.random() * maxX;
+    Math.random() * maxX;
 
     const y =
-        Math.random() * maxY;
+    Math.random() * maxY;
 
     coin.style.left = x + "px";
     coin.style.top = y + "px";
 }
 
+/* UPDATE PLAYER */
+
 function updatePlayer(){
 
     player.style.left =
-        playerX + "px";
+    playerX + "px";
 
     player.style.top =
-        playerY + "px";
+    playerY + "px";
 
     checkCollision();
 }
+
+/* MOVE */
 
 function move(direction){
 
     if(timeLeft <= 0) return;
 
     const gameArea =
-        document.getElementById("gameArea");
+    document.getElementById("gameArea");
 
     const maxX =
-        gameArea.clientWidth - PLAYER_SIZE;
+    gameArea.clientWidth - PLAYER_SIZE;
 
     const maxY =
-        gameArea.clientHeight - PLAYER_SIZE;
+    gameArea.clientHeight - PLAYER_SIZE;
 
     switch(direction){
 
@@ -82,42 +91,53 @@ function move(direction){
             break;
     }
 
-    playerX = Math.max(
-        0,
-        Math.min(playerX,maxX)
-    );
+    playerX =
+    Math.max(0,
+    Math.min(playerX,maxX));
 
-    playerY = Math.max(
-        0,
-        Math.min(playerY,maxY)
-    );
+    playerY =
+    Math.max(0,
+    Math.min(playerY,maxY));
 
     updatePlayer();
 }
 
+/* COLLISION */
+
 function checkCollision(){
 
     const playerRect =
-        player.getBoundingClientRect();
+    player.getBoundingClientRect();
 
     const coinRect =
-        coin.getBoundingClientRect();
+    coin.getBoundingClientRect();
 
     if(
-        playerRect.left < coinRect.right &&
-        playerRect.right > coinRect.left &&
-        playerRect.top < coinRect.bottom &&
-        playerRect.bottom > coinRect.top
+
+        playerRect.left <
+        coinRect.right &&
+
+        playerRect.right >
+        coinRect.left &&
+
+        playerRect.top <
+        coinRect.bottom &&
+
+        playerRect.bottom >
+        coinRect.top
+
     ){
 
         score++;
 
         scoreEl.textContent =
-            score;
+        score;
 
         placeCoin();
     }
 }
+
+/* BUTTONS */
 
 document.getElementById("up")
 .onclick = () => move("up");
@@ -131,71 +151,78 @@ document.getElementById("left")
 document.getElementById("right")
 .onclick = () => move("right");
 
+/* KEYBOARD */
+
 document.addEventListener(
-    "keydown",
-    (e)=>{
+"keydown",
+(e)=>{
 
-        if(e.key==="ArrowUp")
-            move("up");
+    if(e.key==="ArrowUp")
+        move("up");
 
-        if(e.key==="ArrowDown")
-            move("down");
+    if(e.key==="ArrowDown")
+        move("down");
 
-        if(e.key==="ArrowLeft")
-            move("left");
+    if(e.key==="ArrowLeft")
+        move("left");
 
-        if(e.key==="ArrowRight")
-            move("right");
-    }
-);
+    if(e.key==="ArrowRight")
+        move("right");
+});
 
-const timer = setInterval(()=>{
+/* TIMER */
+
+const timer =
+setInterval(()=>{
 
     timeLeft--;
 
     timerEl.textContent =
-        timeLeft;
+    timeLeft;
 
     if(timeLeft <= 0){
 
         clearInterval(timer);
 
         finalScore.textContent =
-            score;
+        score;
 
         gameOverScreen
-            .classList
-            .add("show");
+        .classList
+        .add("show");
     }
 
 },1000);
 
+/* RESTART */
+
 document
 .getElementById("restartBtn")
 .addEventListener(
-    "click",
-    ()=>location.reload()
+"click",
+()=>location.reload()
 );
+
+/* START GAME */
 
 window.addEventListener(
-    "load",
-    ()=>{
+"load",
+()=>{
 
-        const gameArea =
-            document.getElementById(
-                "gameArea"
-            );
+    const gameArea =
+    document.getElementById(
+        "gameArea"
+    );
 
-        playerX =
-            (gameArea.clientWidth/2)
-            - (PLAYER_SIZE/2);
+    playerX =
+    (gameArea.clientWidth/2)
+    - (PLAYER_SIZE/2);
 
-        playerY =
-            (gameArea.clientHeight/2)
-            - (PLAYER_SIZE/2);
+    playerY =
+    (gameArea.clientHeight/2)
+    - (PLAYER_SIZE/2);
 
-        updatePlayer();
+    updatePlayer();
 
-        placeCoin();
-    }
-);
+    placeCoin();
+});
