@@ -9,13 +9,17 @@
 <body>
 
 <div id="hud">
+
     <div class="card">
-        🪙 Score: <span id="score">0</span>
+        <span class="label">Score</span>
+        <span id="score">0</span>
     </div>
 
     <div class="card">
-        ⏱️ Time: <span id="timer">60</span>s
+        <span class="label">Time</span>
+        <span id="timer">60</span>
     </div>
+
 </div>
 
 <div id="gameArea">
@@ -26,7 +30,11 @@
         alt="Player"
     >
 
-    <div id="coin">🪙</div>
+    <img
+        id="coin"
+        src="assets/coin.png"
+        alt="Coin"
+    >
 
 </div>
 
@@ -48,7 +56,7 @@
     <h1>Game Over</h1>
 
     <p>
-        Score:
+        Coins Collected:
         <span id="finalScore">0</span>
     </p>
 
