@@ -10,20 +10,30 @@ const finalScore = document.getElementById("finalScore");
 let score = 0;
 let timeLeft = 60;
 
-let playerX = 180;
-let playerY = 250;
+const PLAYER_SIZE = 64;
+const COIN_SIZE = 40;
+
+let playerX = 0;
+let playerY = 0;
 
 const step = 20;
 
 function placeCoin(){
 
-    const gameArea = document.getElementById("gameArea");
+    const gameArea =
+        document.getElementById("gameArea");
 
-    const maxX = gameArea.clientWidth - 40;
-    const maxY = gameArea.clientHeight - 40;
+    const maxX =
+        gameArea.clientWidth - COIN_SIZE;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const maxY =
+        gameArea.clientHeight - COIN_SIZE;
+
+    const x =
+        Math.random() * maxX;
+
+    const y =
+        Math.random() * maxY;
 
     coin.style.left = x + "px";
     coin.style.top = y + "px";
@@ -31,8 +41,11 @@ function placeCoin(){
 
 function updatePlayer(){
 
-    player.style.left = playerX + "px";
-    player.style.top = playerY + "px";
+    player.style.left =
+        playerX + "px";
+
+    player.style.top =
+        playerY + "px";
 
     checkCollision();
 }
@@ -41,10 +54,14 @@ function move(direction){
 
     if(timeLeft <= 0) return;
 
-    const gameArea = document.getElementById("gameArea");
+    const gameArea =
+        document.getElementById("gameArea");
 
-    const maxX = gameArea.clientWidth - 40;
-    const maxY = gameArea.clientHeight - 40;
+    const maxX =
+        gameArea.clientWidth - PLAYER_SIZE;
+
+    const maxY =
+        gameArea.clientHeight - PLAYER_SIZE;
 
     switch(direction){
 
@@ -65,16 +82,26 @@ function move(direction){
             break;
     }
 
-    playerX = Math.max(0, Math.min(playerX, maxX));
-    playerY = Math.max(0, Math.min(playerY, maxY));
+    playerX = Math.max(
+        0,
+        Math.min(playerX,maxX)
+    );
+
+    playerY = Math.max(
+        0,
+        Math.min(playerY,maxY)
+    );
 
     updatePlayer();
 }
 
 function checkCollision(){
 
-    const playerRect = player.getBoundingClientRect();
-    const coinRect = coin.getBoundingClientRect();
+    const playerRect =
+        player.getBoundingClientRect();
+
+    const coinRect =
+        coin.getBoundingClientRect();
 
     if(
         playerRect.left < coinRect.right &&
@@ -85,63 +112,90 @@ function checkCollision(){
 
         score++;
 
-        scoreEl.textContent = score;
+        scoreEl.textContent =
+            score;
 
         placeCoin();
     }
 }
 
-document.getElementById("up").onclick = () => move("up");
-document.getElementById("down").onclick = () => move("down");
-document.getElementById("left").onclick = () => move("left");
-document.getElementById("right").onclick = () => move("right");
+document.getElementById("up")
+.onclick = () => move("up");
 
-document.addEventListener("keydown",(e)=>{
+document.getElementById("down")
+.onclick = () => move("down");
 
-    if(e.key==="ArrowUp") move("up");
-    if(e.key==="ArrowDown") move("down");
-    if(e.key==="ArrowLeft") move("left");
-    if(e.key==="ArrowRight") move("right");
+document.getElementById("left")
+.onclick = () => move("left");
 
-});
+document.getElementById("right")
+.onclick = () => move("right");
+
+document.addEventListener(
+    "keydown",
+    (e)=>{
+
+        if(e.key==="ArrowUp")
+            move("up");
+
+        if(e.key==="ArrowDown")
+            move("down");
+
+        if(e.key==="ArrowLeft")
+            move("left");
+
+        if(e.key==="ArrowRight")
+            move("right");
+    }
+);
 
 const timer = setInterval(()=>{
 
     timeLeft--;
 
-    timerEl.textContent = timeLeft;
+    timerEl.textContent =
+        timeLeft;
 
     if(timeLeft <= 0){
 
         clearInterval(timer);
 
-        finalScore.textContent = score;
+        finalScore.textContent =
+            score;
 
-        gameOverScreen.classList.add("show");
+        gameOverScreen
+            .classList
+            .add("show");
     }
 
 },1000);
 
-document.getElementById("restartBtn")
-.addEventListener("click",()=>{
+document
+.getElementById("restartBtn")
+.addEventListener(
+    "click",
+    ()=>location.reload()
+);
 
-    location.reload();
+window.addEventListener(
+    "load",
+    ()=>{
 
-});
+        const gameArea =
+            document.getElementById(
+                "gameArea"
+            );
 
-window.addEventListener("load", () => {
+        playerX =
+            (gameArea.clientWidth/2)
+            - (PLAYER_SIZE/2);
 
-    const gameArea =
-        document.getElementById("gameArea");
+        playerY =
+            (gameArea.clientHeight/2)
+            - (PLAYER_SIZE/2);
 
-    playerX =
-        (gameArea.clientWidth / 2) - 21;
+        updatePlayer();
 
-    playerY =
-        (gameArea.clientHeight / 2) - 21;
-
-    updatePlayer();
-});
-
-placeCoin();
-updatePlayer();
+        placeCoin();
+    }
+);
