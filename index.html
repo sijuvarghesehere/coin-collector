@@ -9,8 +9,8 @@
 <body>
 
     <div id="hud">
-        <div>Score: <span id="score">0</span></div>
-        <div>Time: <span id="timer">60</span></div>
+        <div>🪙 Score: <span id="score">0</span></div>
+        <div>⏱️ <span id="timer">60</span>s</div>
     </div>
 
     <div id="gameArea">
@@ -29,10 +29,17 @@
         <button id="down">▼</button>
     </div>
 
-    <div id="gameOver" class="hidden">
+    <div id="gameOver">
         <h1>Game Over</h1>
-        <p>Your Score: <span id="finalScore"></span></p>
-        <button onclick="location.reload()">Play Again</button>
+
+        <p>
+            Your Score:
+            <span id="finalScore">0</span>
+        </p>
+
+        <button id="restartBtn">
+            Play Again
+        </button>
     </div>
 
     <script src="script.js"></script>
