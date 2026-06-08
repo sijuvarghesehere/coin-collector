@@ -10,8 +10,8 @@ const finalScore = document.getElementById("finalScore");
 let score = 0;
 let timeLeft = 60;
 
-let playerX = 150;
-let playerY = 150;
+let playerX = 180;
+let playerY = 250;
 
 const step = 20;
 
@@ -127,6 +127,20 @@ document.getElementById("restartBtn")
 
     location.reload();
 
+});
+
+window.addEventListener("load", () => {
+
+    const gameArea =
+        document.getElementById("gameArea");
+
+    playerX =
+        (gameArea.clientWidth / 2) - 21;
+
+    playerY =
+        (gameArea.clientHeight / 2) - 21;
+
+    updatePlayer();
 });
 
 placeCoin();
