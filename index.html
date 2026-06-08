@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Collector</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coin Collector</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="hud">
-        <div>🪙 Score: <span id="score">0</span></div>
-        <div>⏱️ <span id="timer">60</span>s</div>
+<div id="hud">
+    <div>🪙 Score: <span id="score">0</span></div>
+    <div>⏱️ <span id="timer">60</span>s</div>
+</div>
+
+<div id="gameArea">
+    <div id="player">😀</div>
+    <div id="coin">🪙</div>
+</div>
+
+<div id="controls">
+
+    <button id="up">▲</button>
+
+    <div class="middle">
+        <button id="left">◀</button>
+        <button id="right">▶</button>
     </div>
 
-    <div id="gameArea">
-        <div id="player">😀</div>
-        <div id="coin">🪙</div>
-    </div>
+    <button id="down">▼</button>
 
-    <div id="controls">
-        <button id="up">▲</button>
+</div>
 
-        <div class="middle">
-            <button id="left">◀</button>
-            <button id="right">▶</button>
-        </div>
+<div id="gameOver">
 
-        <button id="down">▼</button>
-    </div>
+    <h1>Game Over</h1>
 
-    <div id="gameOver">
-        <h1>Game Over</h1>
+    <p>
+        Score:
+        <span id="finalScore">0</span>
+    </p>
 
-        <p>
-            Your Score:
-            <span id="finalScore">0</span>
-        </p>
+    <button id="restartBtn">
+        Play Again
+    </button>
 
-        <button id="restartBtn">
-            Play Again
-        </button>
-    </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
