@@ -1,322 +1,222 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
 
-```
-background:#101010;
-color:#fff;
+    background:#101010;
+    color:white;
 
-height:100dvh;
+    height:100dvh;
 
-display:flex;
-flex-direction:column;
-align-items:center;
+    display:flex;
+    flex-direction:column;
 
-overflow:hidden;
+    align-items:center;
 
-padding:10px;
-```
+    overflow:hidden;
 
+    padding:10px;
 }
-
-/* HUD */
 
 #hud{
 
-```
-width:95vw;
-max-width:420px;
+    width:95vw;
+    max-width:420px;
 
-display:flex;
-gap:10px;
+    display:flex;
+    gap:8px;
 
-margin-bottom:10px;
-
-flex-shrink:0;
-```
-
+    margin-bottom:8px;
 }
 
 .card{
 
-```
-flex:1;
+    flex:1;
 
-background:#202020;
+    background:#222;
 
-border-radius:18px;
+    border-radius:16px;
 
-padding:10px;
+    padding:10px;
 
-display:flex;
-flex-direction:column;
-align-items:center;
+    display:flex;
+    flex-direction:column;
 
-box-shadow:0 3px 10px rgba(0,0,0,.3);
-```
-
+    align-items:center;
 }
 
 .label{
 
-```
-font-size:14px;
-opacity:.8;
-```
-
+    font-size:12px;
+    opacity:.8;
 }
 
 #score,
-#timer{
+#timer,
+#bestScore{
 
-```
-font-size:24px;
-font-weight:bold;
-```
-
+    font-size:22px;
+    font-weight:bold;
 }
 
-/* GAME AREA */
+#goalBar{
+
+    width:95vw;
+    max-width:420px;
+
+    background:#2a2a2a;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    padding:8px;
+
+    margin-bottom:8px;
+}
 
 #gameArea{
 
-```
-position:relative;
+    position:relative;
 
-width:95vw;
-max-width:420px;
+    width:95vw;
+    max-width:420px;
 
-flex:1;
+    flex:1;
 
-min-height:400px;
-
-background-image:url("assets/grass-mobile.png");
-
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-border-radius:20px;
-
-border:4px solid #555;
-
-overflow:hidden;
-```
-
-}
-
-/* DESKTOP BACKGROUND */
-
-@media (min-width:768px){
-
-```
-#gameArea{
+    min-height:380px;
 
     background-image:
-    url("assets/grass-desktop.png");
-}
-```
+    url("assets/grass-mobile.png");
 
+    background-size:cover;
+    background-position:center;
+
+    border-radius:20px;
+
+    border:4px solid #555;
+
+    overflow:hidden;
 }
 
-/* PLAYER */
+@media(min-width:768px){
+
+    #gameArea{
+
+        background-image:
+        url("assets/grass-desktop.png");
+    }
+}
 
 #player{
 
-```
-position:absolute;
+    position:absolute;
 
-width:64px;
-height:64px;
+    width:72px;
+    height:72px;
 
-object-fit:contain;
-
-user-select:none;
-pointer-events:none;
-```
-
+    object-fit:contain;
 }
-
-/* COIN */
 
 #coin{
 
-```
-position:absolute;
+    position:absolute;
 
-width:48px;
-height:48px;
+    width:56px;
+    height:56px;
 
-object-fit:contain;
+    object-fit:contain;
 
-animation:bounce 1.5s ease-in-out infinite;
-```
-
+    animation:bounce 1.5s infinite ease-in-out;
 }
 
 @keyframes bounce{
 
-```
-0%,100%{
-    transform:translateY(0);
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
 }
 
-50%{
-    transform:translateY(-6px);
-}
-```
+#joystickContainer{
 
-}
+    width:95vw;
+    max-width:420px;
 
-/* CONTROLS */
+    display:flex;
 
-#controls{
+    justify-content:flex-start;
 
-```
-margin-top:8px;
-
-display:flex;
-flex-direction:column;
-
-align-items:center;
-justify-content:center;
-
-gap:4px;
-
-flex-shrink:0;
-```
-
+    padding-top:6px;
 }
 
-.middle{
+#joystickBase{
 
-```
-display:flex;
+    position:relative;
 
-justify-content:center;
-align-items:center;
-
-gap:36px;
-```
-
+    width:120px;
+    height:120px;
 }
 
-#controls button{
+#joystickBase img:first-child{
 
-```
-width:58px;
-height:58px;
-
-border:none;
-border-radius:50%;
-
-background:#2d2d2d;
-
-color:white;
-
-font-size:22px;
-font-weight:bold;
-
-cursor:pointer;
-
-box-shadow:
-0 4px 12px rgba(0,0,0,.35);
-
-transition:
-transform .1s ease,
-background .2s ease;
-```
-
+    width:100%;
+    height:100%;
 }
 
-#controls button:active{
+#joystickKnob{
 
-```
-transform:scale(.92);
+    position:absolute;
 
-background:#3b3b3b;
-```
+    width:55px;
+    height:55px;
 
+    left:32px;
+    top:32px;
+
+    touch-action:none;
 }
-
-/* GAME OVER */
 
 #gameOver{
 
-```
-position:fixed;
+    position:fixed;
 
-top:0;
-left:0;
+    inset:0;
 
-width:100%;
-height:100%;
+    background:rgba(0,0,0,.95);
 
-background:rgba(0,0,0,.95);
+    display:none;
 
-display:none;
+    flex-direction:column;
 
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    justify-content:center;
+    align-items:center;
 
-gap:20px;
+    gap:20px;
 
-z-index:9999;
-```
-
+    z-index:9999;
 }
 
 #gameOver.show{
 
-```
-display:flex;
-```
-
-}
-
-#gameOver h1{
-
-```
-font-size:42px;
-```
-
-}
-
-#gameOver p{
-
-```
-font-size:24px;
-```
-
-}
-
-#finalScore{
-
-```
-color:gold;
-font-weight:bold;
-```
-
+    display:flex;
 }
 
 #restartBtn{
 
-```
-width:180px;
-height:55px;
+    width:180px;
+    height:55px;
 
-border:none;
-border-radius:12px;
+    border:none;
 
-font-size:20px;
+    border-radius:12px;
 
-cursor:pointer;
-```
-
+    font-size:20px;
 }
