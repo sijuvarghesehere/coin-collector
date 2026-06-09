@@ -1,74 +1,322 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+```
+background:#101010;
+color:#fff;
+
+height:100dvh;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+overflow:hidden;
+
+padding:10px;
+```
+
+}
+
+/* HUD */
+
+#hud{
+
+```
+width:95vw;
+max-width:420px;
+
+display:flex;
+gap:10px;
+
+margin-bottom:10px;
+
+flex-shrink:0;
+```
+
+}
+
+.card{
+
+```
+flex:1;
+
+background:#202020;
+
+border-radius:18px;
+
+padding:10px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+box-shadow:0 3px 10px rgba(0,0,0,.3);
+```
+
+}
+
+.label{
+
+```
+font-size:14px;
+opacity:.8;
+```
+
+}
+
+#score,
+#timer{
+
+```
+font-size:24px;
+font-weight:bold;
+```
+
+}
+
+/* GAME AREA */
+
+#gameArea{
+
+```
+position:relative;
+
+width:95vw;
+max-width:420px;
+
+flex:1;
+
+min-height:400px;
+
+background-image:url("assets/grass-mobile.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+border-radius:20px;
+
+border:4px solid #555;
+
+overflow:hidden;
+```
+
+}
+
+/* DESKTOP BACKGROUND */
+
+@media (min-width:768px){
+
+```
+#gameArea{
+
+    background-image:
+    url("assets/grass-desktop.png");
+}
+```
+
+}
+
+/* PLAYER */
+
+#player{
+
+```
+position:absolute;
+
+width:64px;
+height:64px;
+
+object-fit:contain;
+
+user-select:none;
+pointer-events:none;
+```
+
+}
+
+/* COIN */
+
+#coin{
+
+```
+position:absolute;
+
+width:48px;
+height:48px;
+
+object-fit:contain;
+
+animation:bounce 1.5s ease-in-out infinite;
+```
+
+}
+
+@keyframes bounce{
+
+```
+0%,100%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-6px);
+}
+```
+
+}
+
 /* CONTROLS */
 
 #controls{
 
-    margin-top:6px;
+```
+margin-top:8px;
 
-    width:200px;
+display:flex;
+flex-direction:column;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+align-items:center;
+justify-content:center;
 
-    gap:6px;
+gap:4px;
+
+flex-shrink:0;
+```
+
 }
-
-/* UP BUTTON */
-
-#up{
-
-    margin-bottom:2px;
-}
-
-/* LEFT + RIGHT ROW */
 
 .middle{
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+```
+display:flex;
 
-    gap:36px;
+justify-content:center;
+align-items:center;
+
+gap:36px;
+```
+
 }
-
-/* DOWN BUTTON */
-
-#down{
-
-    margin-top:2px;
-}
-
-/* ALL BUTTONS */
 
 #controls button{
 
-    width:58px;
-    height:58px;
+```
+width:58px;
+height:58px;
 
-    border:none;
-    border-radius:50%;
+border:none;
+border-radius:50%;
 
-    background:#2d2d2d;
+background:#2d2d2d;
 
-    color:#ffffff;
+color:white;
 
-    font-size:22px;
-    font-weight:bold;
+font-size:22px;
+font-weight:bold;
 
-    cursor:pointer;
+cursor:pointer;
 
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.35);
+box-shadow:
+0 4px 12px rgba(0,0,0,.35);
 
-    transition:
-        transform .1s ease,
-        background .2s ease;
+transition:
+transform .1s ease,
+background .2s ease;
+```
+
 }
 
 #controls button:active{
 
-    transform:scale(.92);
+```
+transform:scale(.92);
 
-    background:#3b3b3b;
+background:#3b3b3b;
+```
+
+}
+
+/* GAME OVER */
+
+#gameOver{
+
+```
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.95);
+
+display:none;
+
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+gap:20px;
+
+z-index:9999;
+```
+
+}
+
+#gameOver.show{
+
+```
+display:flex;
+```
+
+}
+
+#gameOver h1{
+
+```
+font-size:42px;
+```
+
+}
+
+#gameOver p{
+
+```
+font-size:24px;
+```
+
+}
+
+#finalScore{
+
+```
+color:gold;
+font-weight:bold;
+```
+
+}
+
+#restartBtn{
+
+```
+width:180px;
+height:55px;
+
+border:none;
+border-radius:12px;
+
+font-size:20px;
+
+cursor:pointer;
+```
+
 }
