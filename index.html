@@ -1,79 +1,208 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coin Collector</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- HUD -->
+
 <div id="hud">
 
-    <div class="card">
-        <span class="label">Score</span>
-        <span id="score">0</span>
-    </div>
+```
+<div class="card">
+    <span class="label">Score</span>
+    <span id="score">0</span>
+</div>
 
-    <div class="card">
-        <span class="label">Time</span>
-        <span id="timer">60</span>
-    </div>
+<div class="card">
+    <span class="label">Time</span>
+    <span id="timer">60</span>
+</div>
 
-    <div class="card">
-        <span class="label">Best</span>
-        <span id="bestScore">0</span>
-    </div>
+<div class="card">
+    <span class="label">Best</span>
+    <span id="bestScore">0</span>
+</div>
+
+<div class="card">
+    <span class="label">Level</span>
+    <span id="level">1</span>
+</div>
+
+<button id="pauseBtn">
+
+    <img
+        src="assets/pause.png"
+        alt="Pause"
+    >
+
+</button>
+```
 
 </div>
+
+<!-- GOAL BAR -->
 
 <div id="goalBar">
+
+```
+<span id="goalText">
     Collect 20 Coins
+</span>
+```
+
 </div>
+
+<!-- GAME AREA -->
 
 <div id="gameArea">
 
-    <img id="player"
-         src="assets/player.png"
-         alt="Player">
+```
+<!-- PLAYER -->
 
-    <img id="coin"
-         src="assets/coin.png"
-         alt="Coin">
+<img
+    id="player"
+    src="assets/player.png"
+    alt="Player"
+>
+
+<!-- COIN -->
+
+<img
+    id="coin"
+    src="assets/coin.png"
+    alt="Coin"
+>
+
+<!-- MAGNET -->
+
+<img
+    id="magnet"
+    src="assets/magnet.png"
+    alt="Magnet"
+>
+
+<!-- TREES -->
+
+<img
+    id="tree1"
+    class="obstacle tree"
+    src="assets/tree.png"
+    alt="Tree"
+>
+
+<img
+    id="tree2"
+    class="obstacle tree"
+    src="assets/tree.png"
+    alt="Tree"
+>
+
+<img
+    id="tree3"
+    class="obstacle tree"
+    src="assets/tree.png"
+    alt="Tree"
+>
+
+<!-- ROCKS -->
+
+<img
+    id="rock1"
+    class="obstacle rock"
+    src="assets/rock.png"
+    alt="Rock"
+>
+
+<img
+    id="rock2"
+    class="obstacle rock"
+    src="assets/rock.png"
+    alt="Rock"
+>
+
+<img
+    id="rock3"
+    class="obstacle rock"
+    src="assets/rock.png"
+    alt="Rock"
+>
+
+<!-- FLOATING SCORE EFFECT -->
+
+<div id="floatingScore">
+    +1
+</div>
+```
 
 </div>
+
+<!-- JOYSTICK -->
 
 <div id="joystickContainer">
 
-    <div id="joystickBase">
+```
+<div id="joystickBase">
 
-        <img
-            src="assets/joystick-base.png"
-            alt="Joystick Base"
-        >
+    <img
+        src="assets/joystick-base.png"
+        alt="Joystick Base"
+    >
 
-        <img
-            id="joystickKnob"
-            src="assets/joystick-knob.png"
-            alt="Joystick Knob"
-        >
+    <img
+        id="joystickKnob"
+        src="assets/joystick-knob.png"
+        alt="Joystick Knob"
+    >
 
-    </div>
+</div>
+```
 
 </div>
 
+<!-- PAUSE SCREEN -->
+
+<div id="pauseScreen">
+
+```
+<h2>Game Paused</h2>
+
+<button id="resumeBtn">
+    Resume
+</button>
+```
+
+</div>
+
+<!-- GAME OVER -->
+
 <div id="gameOver">
 
-    <h1>Game Over</h1>
+```
+<h1>Game Over</h1>
 
-    <p>
-        Coins Collected:
-        <span id="finalScore">0</span>
-    </p>
+<p>
 
-    <button id="restartBtn">
-        Play Again
-    </button>
+    Coins Collected:
+
+    <span id="finalScore">
+        0
+    </span>
+
+</p>
+
+<button id="restartBtn">
+
+    Play Again
+
+</button>
+```
 
 </div>
 
