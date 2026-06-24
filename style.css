@@ -404,17 +404,17 @@ height:100%;
 ```
 position:absolute;
 
-width:55px;
-height:55px;
+width:70px;
+height:70px;
 
-left:32px;
-top:32px;
+left:25px;
+top:25px;
 
 touch-action:none;
 
-z-index:100;
-```
-
+z-index:999;
+display:block;
+    object-fit:contain;
 }
 
 /* PAUSE SCREEN */
